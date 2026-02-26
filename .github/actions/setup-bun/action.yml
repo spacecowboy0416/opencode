@@ -26,7 +26,7 @@ runs:
             Linux)   OS=linux ;;
             Windows) OS=windows ;;
           esac
-          echo "url=https://github.com/oven-sh/bun/releases/download/canary/bun-${OS}-x64-baseline.zip" >> "$GITHUB_OUTPUT"
+          echo "url=https://github.com/oven-sh/bun/releases/latest/download/bun-${OS}-x64-baseline.zip" >> "$GITHUB_OUTPUT"
         fi
 
     - name: Setup Bun
@@ -52,8 +52,7 @@ runs:
               echo "Already cached: $DEST"
               continue
             fi
-            URL="https://github.com/oven-sh/bun/releases/download/canary/bun-${TARGET}.zip"
-            echo "Downloading $TARGET from $URL"
+            URL="https://github.com/oven-sh/bun/releases/latest/download/bun-${TARGET}.zip"
             if curl -sfL -o "$TMP_DIR/bun.zip" "$URL"; then
               unzip -qo "$TMP_DIR/bun.zip" -d "$TMP_DIR"
               if echo "$TARGET" | grep -q "windows"; then
